@@ -1,41 +1,32 @@
 pipeline {
     agent any
     parameters {
-        choice(choices: 'yes\nno', description: 'Is deployment Azure?', name: 'azr')
-        choice(choices: 'yes\nno', description: 'Is deployment AWS?', name: 'aws')
+        providerId = script{
+            ($(curl -s 'https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json' | jq '.providerId'))
+        }
     }
     stages {
-        stage('azure') {
-            when {
-                environment name: 'azr', value: 'yes'
+        stage('selectProvider') {
+            if (env.providerId == 'azr')
+            {
+                echo 'azr'
             }
-            steps {
-                echo "Azure"
+            else if (env.providerId == 'aws')
+            {
+                echo 'aws'
             }
-        }
-        stage('aws/gcp parallel') {
-            steps {
-                script{
-                        if (env.aws == 'yes')
-                        {
-                                echo "Aws"
-                        }
-                        else 
-                        {
-                                 echo "Gcp"
-                        }
-                      }
-                            
-                
+            else if (env.providerId == 'gcp')
+            {
+                echo 'gcp'
             }
         }
     }
 post {
         success {
-echo "Test succeeded"
+            echo "Test succeeded"
         }
         failure {
             echo "Test failed"
-}
+        }
     }
 }

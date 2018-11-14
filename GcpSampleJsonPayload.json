@@ -1,0 +1,9 @@
+{
+    "providerId":  "gcp",
+    "otherInfo":  "Millwall",
+    "sampleArray" : [
+        "Crystal Palace",
+        "Sunderland",
+        "PSG"
+    ]
+}

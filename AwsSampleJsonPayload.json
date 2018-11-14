@@ -1,0 +1,9 @@
+{
+    "providerId":  "aws",
+    "otherInfo":  "Millwall",
+    "sampleArray" : [
+        "Crystal Palace",
+        "Sunderland",
+        "PSG"
+    ]
+}

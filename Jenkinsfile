@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('azure') {
             when {
-                enivronment name: 'azr', value: 'yes'
+                environment name: 'azr', value: 'yes'
             }
             steps {
                 echo "Azure"

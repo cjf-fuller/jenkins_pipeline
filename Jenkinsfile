@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('defineProvideVar') {
             steps {
+                step {
                 env.providerId = 'NULL'
+                }
             }
         }
         stage('identifyProvider') {

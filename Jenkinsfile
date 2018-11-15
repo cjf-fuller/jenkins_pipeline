@@ -7,8 +7,8 @@ pipeline {
         stage('identifyProvider') {
             steps {
                 //sh "${providerId}=\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq --slurp '.providerId')"
-                sh "${providerId}=\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\")"
-                sh "echo 'Provider Id is now:' + ${providerId}"
+                sh "${env.providerId}=\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\")"
+                sh "echo 'Provider Id is now:' + ${env.providerId}"
             }
         }
         stage('selectProvider') {

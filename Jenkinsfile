@@ -6,9 +6,6 @@ def providerId = sh (
 
 pipeline {
     agent any
-    environment {
-        //providerId = "NULL"
-    }
     stages {
         /*
         stage('identifyProvider') {

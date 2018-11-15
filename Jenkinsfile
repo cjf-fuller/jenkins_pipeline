@@ -13,7 +13,9 @@ pipeline {
             }
         }
         stage('selectProvider') {
-            if (params.providerId == 'azr')
+            steps {
+                script {
+                     if (params.providerId == 'azr')
             {
                 echo 'azr'
             }
@@ -24,6 +26,8 @@ pipeline {
             else if (params.providerId == 'gcp')
             {
                 echo 'gcp'
+            }
+                }
             }
         }
     }

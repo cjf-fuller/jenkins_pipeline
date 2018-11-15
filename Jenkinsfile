@@ -2,7 +2,9 @@ pipeline {
     agent any
     stages {
         stage('defineProvideVar') {
-            env.providerId = 'NULL'
+            steps {
+                env.providerId = 'NULL'
+            }
         }
         stage('identifyProvider') {
             steps {

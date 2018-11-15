@@ -6,10 +6,10 @@ pipeline {
     stages {
         stage('identifyProvider') {
             steps {
-                sh '''#!/bin/bash
-            ${providerId} = ($(curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq '.providerId'))
+                sh "#!/bin/bash
+            ${providerId} = ($(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId'))
             echo ${providerId} 
-        '''
+        "
             }
         }
         stage('selectProvider') {

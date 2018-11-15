@@ -1,29 +1,29 @@
 pipeline {
     agent any
-    parameters {
-        string(name: 'providerId', defaultValue: 'NULL')
-    }
     stages {
+        stage('defineProvideVar') {
+            env.providerId = 'NULL'
+        }
         stage('identifyProvider') {
             steps {
                 sh '''#!/bin/bash
-            ${params.providerId} = ($(curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq '.providerId'))
-            echo ${params.providerId} 
+            ${env.providerId} = ($(curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq '.providerId'))
+            echo ${env.providerId} 
         '''
             }
         }
         stage('selectProvider') {
             steps {
                 script {
-                     if (params.providerId == 'azr')
+                     if (env.providerId == 'azr')
             {
                 echo 'azr'
             }
-            else if (params.providerId == 'aws')
+            else if (env.providerId == 'aws')
             {
                 echo 'aws'
             }
-            else if (params.providerId == 'gcp')
+            else if (env.providerId == 'gcp')
             {
                 echo 'gcp'
             }

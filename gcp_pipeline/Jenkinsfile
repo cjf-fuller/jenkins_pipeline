@@ -1,0 +1,15 @@
+pipeline {
+    stages {
+        stage ('deliverJsonPayload') {
+            echo "${RootSchemaGcp}"
+        }
+    }
+    post {
+        success {
+            echo "Test succeeded"
+        }
+        failure {
+            echo "Test failed"
+        }
+    }
+}

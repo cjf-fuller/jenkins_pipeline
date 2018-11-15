@@ -20,24 +20,30 @@ pipeline {
                 }
             }  
         }
-        stage('selectProvider') {
+        stage('selectProviderAndInvokePipeline') {
             steps {
                 script {
                      if (providerId == 'azr')
             {
-                echo 'azr'
+                build job: 'azr_pipeline_demo', parameters: [
+                    string(name: 'RootSchemaAzr', value: rootschema)
+                ]
             }
             else if (providerId == 'aws')
             {
-                echo 'aws'
+                build job: 'aws_pipeline_demo', parameters: [
+                    string(name: 'RootSchemaAws', value: rootschema)
+                ]
             }
             else if (providerId == 'gcp')
             {
-                echo 'gcp'
+                build job: 'gcp_pipeline_demo', parameters: [
+                    string(name: 'RootSchemaGcp', value: rootschema)
+                ]
             }
             else
             {
-                echo providerId
+                echo 'FAIL NO PIPELINE CALLED PROVIDER ID NOT RETURNED CORRECTLY'
             }
                 }
             }

@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('identifyProvider') {
             steps {
-                sh "${providerId}=\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | tac | tac | jq '.providerId')"
+                sh "${providerId}=\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq --slurp '.providerId')"
                 sh "echo ${providerId}"
             }
         }

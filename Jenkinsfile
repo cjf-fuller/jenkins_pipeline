@@ -11,7 +11,7 @@ pipeline {
                 //sh "echo 'Provider Id is now:' + ${env.providerId}"
                 script 
                 {
-                providerID = sh (
+                providerId = sh (
                     //script: "\$(curl -s \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')",
                     script: "echo \$(curl -s \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')",
                     returnStdout: true
@@ -33,6 +33,10 @@ pipeline {
             else if (providerId == 'gcp')
             {
                 echo 'gcp'
+            }
+            else
+            {
+                echo providerId
             }
                 }
             }

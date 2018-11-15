@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('deliverJsonPayload') {
             steps{
-                echo "${RootSchemaAzr}"
+                echo "${env.RootSchemaAzr}"
             }
         }
     }

@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('deliverJsonPayload') {
             steps{
-                echo "${RootSchemaAws}"
+                echo "${env.RootSchemaAws}"
             }
         }
     }

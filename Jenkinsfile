@@ -12,7 +12,7 @@ pipeline {
                 script 
                 {
                 providerId = sh (
-                    script: "\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')",
+                    script: "\$(curl -s \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')",
                     returnStdout: true
                 ).trim()
                 echo "The providerId is: ${providerId}"

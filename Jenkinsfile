@@ -8,7 +8,7 @@ pipeline {
             steps {
                 //sh "${providerId}=\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq --slurp '.providerId')"
                 sh "${providerId}=\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\")"
-                sh "echo ${providerId}"
+                sh "echo 'Provider Id is now:' + ${providerId}"
             }
         }
         stage('selectProvider') {

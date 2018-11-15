@@ -1,4 +1,5 @@
 def providerId
+def rootschema
 
 pipeline {
     agent any
@@ -6,14 +7,14 @@ pipeline {
         
         stage('identifyProvider') {
             steps{
-                //sh "${providerId}=\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq --slurp '.providerId')"
-                //sh "echo \$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')"
-                //sh "echo 'Provider Id is now:' + ${env.providerId}"
                 script 
                 {
                 providerId = sh (
-                    //script: "\$(curl -s \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')",
                     script: "echo \$(curl -s \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')",
+                    returnStdout: true
+                ).trim()
+                rootschema = sh (
+                    script: "echo \$(curl -s \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\")",
                     returnStdout: true
                 ).trim()
                 }

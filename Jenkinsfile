@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
         providerId = script{
-            ($(curl -s 'https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json' | jq '.providerId'))
+            ($(curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq '.providerId'))
         }
     }
     stages {

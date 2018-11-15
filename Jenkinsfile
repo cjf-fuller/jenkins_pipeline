@@ -1,11 +1,16 @@
 pipeline {
     agent any
     parameters {
-        providerId = bash '''#!/bin/bash
-             ($(curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq '.providerId'))
-        '''
+        providerId = 'NULL'
     }
     stages {
+        stage('identifyProvider') {
+            bash '''#!/bin/bash
+            ${env.providerId}=($(curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq '.providerId'))
+            echo ${env.providerId} 
+        '''
+        
+        }
         stage('selectProvider') {
             if (env.providerId == 'azr')
             {

@@ -43,7 +43,7 @@ pipeline {
             }
             else
             {
-                echo 'FAIL NO PIPELINE CALLED PROVIDER ID NOT RETURNED CORRECTLY'
+                echo 'FAILED: NO PIPELINE CALLED PROVIDER ID NOT RETURNED CORRECTLY'
             }
                 }
             }

@@ -23,22 +23,19 @@ pipeline {
         stage('selectProviderAndInvokePipeline') {
             steps {
                 script {
-                    if (providerId == "\"aws\"") {
-                    echo providerId    
-                }
-                     if (providerId == "azr")
+                     if (providerId == "\"azr\"")
             {
                 build job: 'azr_pipeline_demo', parameters: [
                     string(name: 'RootSchemaAzr', value: rootschema)
                 ]
             }
-            else if (providerId == "aws")
+            else if (providerId == "\"aws\"")
             {
                 build job: 'aws_pipeline_demo', parameters: [
                     string(name: 'RootSchemaAws', value: rootschema)
                 ]
             }
-            else if (providerId == "gcp")
+            else if (providerId == "\"gcp\"")
             {
                 build job: 'gcp_pipeline_demo', parameters: [
                     string(name: 'RootSchemaGcp', value: rootschema)

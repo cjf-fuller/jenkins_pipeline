@@ -11,8 +11,9 @@ pipeline {
                 //sh "echo 'Provider Id is now:' + ${env.providerId}"
                 script 
                 {
-                sh (
-                    script: "\$(curl -s \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')",
+                providerID = sh (
+                    //script: "\$(curl -s \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')",
+                    script: "\$(curl -s \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\")",
                     returnStdout: true
                 )
                 }

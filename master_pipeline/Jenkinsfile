@@ -23,7 +23,7 @@ pipeline {
         stage('selectProviderAndInvokePipeline') {
             steps {
                 script {
-                    if (providerId == "aws") {
+                    if (providerId == "\"aws\"") {
                     echo providerId    
                 }
                      if (providerId == "azr")

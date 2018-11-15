@@ -1,7 +1,13 @@
+def providerId = sh (
+                    script: "\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')",
+                    returnStdout: true
+                ).trim()
+                echo "The providerId is: ${providerId}"
+
 pipeline {
     agent any
     environment {
-        providerId = "NULL"
+        //providerId = "NULL"
     }
     stages {
         stage('identifyProvider') {
@@ -9,11 +15,11 @@ pipeline {
                 //sh "${providerId}=\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq --slurp '.providerId')"
                 //sh "echo \$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')"
                 //sh "echo 'Provider Id is now:' + ${env.providerId}"
-                providerId = sh (
+                /*def providerId = sh (
                     script: "\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')",
                     returnStdout: true
                 ).trim()
-                echo "The providerId is: ${providerId}"
+                echo "The providerId is: ${providerId}"*/
             }
         }
         stage('selectProvider') {

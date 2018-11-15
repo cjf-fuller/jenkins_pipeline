@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('deliverJsonPayload') {
             steps{
-                echo "${buildVariables.RootSchemaAws}"
+                echo "${params.RootSchemaAws}"
             }
         }
     }

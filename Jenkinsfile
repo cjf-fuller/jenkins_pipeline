@@ -22,6 +22,7 @@ pipeline {
         }
         stage('selectProviderAndInvokePipeline') {
             steps {
+                echo providerId
                 script {
                      if (providerId == 'azr')
             {

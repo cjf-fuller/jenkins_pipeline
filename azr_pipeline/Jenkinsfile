@@ -1,7 +1,10 @@
 pipeline {
+    agent any
     stages {
         stage ('deliverJsonPayload') {
-            echo "${RootSchemaAzr}"
+            steps{
+                echo "${RootSchemaAzr}"
+            }
         }
     }
     post {

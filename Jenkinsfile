@@ -6,12 +6,17 @@ pipeline {
     stages {
         stage('identifyProvider') {
             steps {
-                sh "${providerId}=\$(curl \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | tac | tac | jq '.providerId')"
+                script{
+                    env.providerId = sh(
+                        script: '''curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq -r '. | .providerId' ''',
+                        returnStdout: true).trim()
+                    )
+                }
             }
         }
         stage('selectProvider') {
             steps {
-                script {
+            script {
                      if (providerId == 'azr')
             {
                 echo providerId

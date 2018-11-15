@@ -15,6 +15,7 @@ pipeline {
                 ).trim()
                 echo "The providerId is: ${providerId}"
             }  
+        }
         stage('selectProvider') {
             steps {
                 script {

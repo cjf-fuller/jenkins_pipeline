@@ -1,9 +1,9 @@
 pipeline {
     agent any
     parameters {
-        providerId = script{
-            ($(curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq '.providerId'))
-        }
+        providerId = bash '''#!/bin/bash
+             ($(curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq '.providerId'))
+        '''
     }
     stages {
         stage('selectProvider') {

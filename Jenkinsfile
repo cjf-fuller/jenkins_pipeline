@@ -24,15 +24,15 @@ pipeline {
                 script {
                      if (providerId == 'azr')
             {
-                echo providerId
+                echo 'azr'
             }
             else if (providerId == 'aws')
             {
-                echo providerId
+                echo 'aws'
             }
             else if (providerId == 'gcp')
             {
-                echo providerId
+                echo 'gcp'
             }
                 }
             }

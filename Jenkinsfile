@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    ironment {
+    environment {
         providerId = "NULL"
     }
     stages {

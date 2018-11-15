@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('identifyProvider') {
             steps {
-                bash '''#!/bin/bash
+                sh '''#!/bin/bash
             ${params.providerId}=($(curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq '.providerId'))
             echo ${params.providerId} 
         '''

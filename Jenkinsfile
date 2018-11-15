@@ -14,7 +14,7 @@ pipeline {
                 providerId = sh (
                     script: "\$(curl -s \"https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json\" | jq '.providerId')",
                     returnStdout: true
-                ).trim()
+                )
                 }
             }  
         }

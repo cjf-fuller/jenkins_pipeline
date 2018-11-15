@@ -1,35 +1,31 @@
 pipeline {
     agent any
+    ironment {
+        providerId = "NULL"
+    }
     stages {
-        stage('defineProvideVar') {
-            steps {
-                step {
-                env.providerId = 'NULL'
-                }
-            }
-        }
         stage('identifyProvider') {
             steps {
                 sh '''#!/bin/bash
-            ${env.providerId} = ($(curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq '.providerId'))
-            echo ${env.providerId} 
+            ${providerId} = ($(curl https://raw.githubusercontent.com/cjf-fuller/jenkins_pipeline/master/AwsSampleJsonPayload.json | jq '.providerId'))
+            echo ${providerId} 
         '''
             }
         }
         stage('selectProvider') {
             steps {
                 script {
-                     if (env.providerId == 'azr')
+                     if (providerId == 'azr')
             {
-                echo 'azr'
+                echo providerId
             }
-            else if (env.providerId == 'aws')
+            else if (providerId == 'aws')
             {
-                echo 'aws'
+                echo providerId
             }
-            else if (env.providerId == 'gcp')
+            else if (providerId == 'gcp')
             {
-                echo 'gcp'
+                echo providerId
             }
                 }
             }

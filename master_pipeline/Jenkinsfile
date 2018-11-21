@@ -3,8 +3,14 @@ def rootschema
 
 pipeline {
     agent any
+
+    parameters {
+        string(name: 'providerId')
+        string(name: 'rootschema')
+    }
+
     stages {
-        
+        /*
         stage('identifyProvider') {
             steps{
                 script 
@@ -19,7 +25,7 @@ pipeline {
                 ).trim()
                 }
             }  
-        }
+        }*/
         stage('selectProviderAndInvokePipeline') {
             steps {
                 script {

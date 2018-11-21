@@ -28,8 +28,6 @@ pipeline {
         }*/
         stage('selectProviderAndInvokePipeline') {
             steps {
-                echo params.providerId
-                echo params.rootschema
                 script {
                      if (params.providerId == "azr")
             {
